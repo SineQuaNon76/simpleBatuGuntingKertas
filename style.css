@@ -3,20 +3,10 @@
     margin:0;
 }
 
-html, body {
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+body{
+    background-color: rgb(68 64 60);
 }
 
-
-.container{
-    text-align: center;
-    border: 2px solid black;
-    padding: 50px;
-}
-
-.tombol{
-    margin: 20px;
+button{
+    text-decoration: none;
 }

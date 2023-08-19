@@ -3,23 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Batu Gunting Kertas</h1>
+    
+    <div class="container flex flex-col  max-w-full ">
+        
+        <header>
+            <div class="flex justify-center bg-orange-200 max-w-full p-8">
+                <h1 class="text-3xl font-bold" >Batu Gunting Kertas</h1>
+            </div>
+        </header>
 
-        <div class="tombol">
-            <button class="batu" id="btnBatu">Batu</button>
-            <button class="gunting" id="btnGunting">Gunting</button>
-            <button class="kertas" id="btnKertas">Kertas</button>
+
+        <main class="mx-auto">
+        <div class="mt-12 border-2  p-12 rounded-lg border-sky-500  flex flex-col justify-center items-center">
+
+
+            <div class="flex space-x-12 justify-center items-center mt-8 text-3xl font-medium">
+                <h2 class="" id="scoUser">Score User : </h2>
+                <h2 class="" id="scoCom">Score Computer : </h2>
+            </div>
+
+            <div class="tombol space-x-4 mt-12">
+                <button class="batu rounded-lg bg-teal-500 text-8xl p-8  hover:bg-teal-400 " id="btnBatu">✊</button>
+                <button class="gunting rounded-lg bg-teal-500 text-8xl p-8 hover:bg-teal-400" id="btnGunting">✌</button>
+                <button class="kertas rounded-lg bg-teal-500 text-8xl p-8 hover:bg-teal-400" id="btnKertas">✋</button>
+            </div>
+
+        
+
+            <div class="nampung text-3xl font-sans mt-12">
+                <div class="teks font-medium" id="teks"></div>
+                <div class="win font-medium text-center pt-4 text-amber-500" id="win"></div>
+            </div>
+
+            <button class="btnRef bg-violet-500 hover:bg-violet-400 p-3 rounded-full mt-6 font-medium" id="resetButton">
+                Play Again
+            </button>
+
         </div>
+        </main>
 
-        <div class="teks" id="teks"></div>
-        <div class="win" id="win"></div>
+
+        <footer class="bottom-0 left-0 right-0 absolute">
+            <div class="bg-orange-200 p-4 flex justify-center font-bold text-xl">
+                Made With Love
+            </div>
+        </footer>
 
     </div>
+
+   
+
 
     <script src="script.js"></script>
 </body>

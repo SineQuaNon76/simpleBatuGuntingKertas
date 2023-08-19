@@ -8,7 +8,10 @@ const btnGunting = document.getElementById('btnGunting');
 const btnKertas = document.getElementById('btnKertas');
 const teks = document.getElementById('teks');
 const win = document.getElementById('win');
-const disable= document.querySelectorAll('button')
+const scoUser = document.getElementById('scoUser');
+const scoCom = document.getElementById('scoCom');
+const disable= document.querySelectorAll('.tombol button');
+const btnRef = document.getElementById('resetButton');
 
 function computerLogic() {
     let array = ["batu", "kertas", "gunting"];
@@ -26,25 +29,46 @@ function mainkan(playerSelection, computerSelection){
 
         //if player ngepick batu
         if(playerSelection === "batu"){
-            computerSelection === "kertas" ?  result = `Kamu Kalah Batu kalah lawan Kertas <br> Player Score : ${scoreUser} <br> Computer Score : ${++scoreCom}  <br>`
-            : result = `Kamu Menang Batu menang lawan Gunting <br> Player Score : ${++scoreUser} <br> Computer Score : ${scoreCom} <br>`
+            if(computerSelection === "kertas"){
+                result = "Kamu Kalah Batu kalah lawan Kertas"
+                ++scoreCom
+            }else{
+                result = "Kamu Menang Batu menang lawan Gunting"
+                ++scoreUser
+            }
 
 
             //if player pick kertas
         }else if(playerSelection === "kertas"){
-            computerSelection === "gunting" ? result = `Kamu Kalah Kertas kalah lawan Gunting <br> Player Score : ${scoreUser} <br> Computer Score : ${++scoreCom} <br> `
-            : result = `Kamu Menang Batu menang lawan Gunting <br> Player Score : ${++scoreUser} <br> Computer Score : ${scoreCom} <br>`
+            if(computerSelection === "gunting"){
+                result = "Kamu Kalah Kertas kalah lawan Gunting"
+                ++scoreCom
+            }else{
+                result = "Kamu Menang Batu menang lawan Gunting"
+                ++scoreUser
+            }
+
 
             //if player pick gunting
         }else if(playerSelection === "gunting"){
-            computerSelection === "kertas" ? result = `Kamu Menang Gunting menang lawan Kertas <br> Player Score : ${++scoreUser} <br> Computer Score : ${scoreCom} <br>`
-            : result = `Kamu Kalah Gunting kalah lawan Batu <br> Player Score : ${scoreUser} <br> Computer Score : ${++scoreCom} <br>`
+            if(computerSelection === "kertas"){
+                result = "Kamu Menang Gunting menang lawan Kertas"
+                ++scoreUser
+            }else{
+                result = "Kamu Kalah Gunting kalah lawan Batu"
+                ++scoreCom
+            }
         }
     }
 
     document.getElementById('teks').innerHTML = result
+    scoCom.textContent = `Score Computer : ${scoreCom}`
+    scoUser.textContent = `Score User : ${scoreUser}`
     return result;
+
 }
+
+
 
 
 function disableButton(){
@@ -53,6 +77,14 @@ function disableButton(){
     })
 }
 
+function resetGame(){
+    btnRef.addEventListener('click', () =>{
+        window.location.reload();
+    })
+}
+
+
+
 btnBatu.addEventListener('click', () => handleChoice("batu"));
 btnKertas.addEventListener('click', () => handleChoice("kertas"));
 btnGunting.addEventListener('click', () => handleChoice("gunting"));
@@ -60,10 +92,11 @@ btnGunting.addEventListener('click', () => handleChoice("gunting"));
 function gameOver(){
     if(scoreUser === 5 || scoreCom === 5){
         disableButton()
+        resetGame()
         if(scoreUser > scoreCom){
-            win.innerHTML = `Kamu Menang <br> Refresh browser and Play Again`
+            win.innerHTML = `Kamu Menang `
         }else{
-            win.innerHTML = "Kamu Kalah <br> Refresh browser and Play Again"
+            win.innerHTML = "Kamu Kalah "
         }
     }
 }
